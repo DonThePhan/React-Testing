@@ -1,6 +1,3 @@
-[submodule "6_Mocking-Modules"]
-	path = 6_Mocking-Modules
-	url = git@github.com:DonThePhan/6_Mocking-Modules.git
-[submodule "7_React-Testing-For-Beginners"]
-	path = 7_React-Testing-For-Beginners
-	url = git@github.com:DonThePhan/7_React-Testing-For-Beginners.git
+[submodule "RT_1_Dive-in"]
+	path = RT_1_Dive-in
+	url = git@github.com:DonThePhan/RT_1_Dive-in.git
