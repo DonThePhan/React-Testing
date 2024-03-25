@@ -11,12 +11,12 @@ function UserList({ users }) {
   });
   return (
     <table>
-      <th>
+      <thead>
         <tr>
           <th>Name</th>
           <th>Email</th>
         </tr>
-      </th>
+      </thead>
       <tbody>{renderedUsers}</tbody>
     </table>
   );
