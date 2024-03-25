@@ -12,17 +12,20 @@ function UserForm({ onUserAdd }) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor=''>Name</label>
+        {/** htmlFor MUST contain the id of its ref input, if you want to target input using getByRole w/ second arg */}
+        <label htmlFor='name'>Name</label>
         <input
           type='text'
+          id='name'
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor=''>Email</label>
+        <label htmlFor='email'>Enter Email</label>
         <input
           type='text'
+          id='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />

@@ -27,16 +27,20 @@ test('it shows 2 inputs & a button', () => {
  */
 
 test('it calls onUserAdd when the form is submitted', async () => {
-  // NOT THE BEST IMPLEMENTATION
-  const argList = [];
-  const callback = (...args) => {
-    argList.push(args);
-  };
+  // Mock function to call in place of actual function (cuz we don't need to get the actual function to do anything)
+  const onUserAddMock = jest.fn();
+
   // Try to render my component
-  render(<UserForm onUserAdd={callback} />);
+  render(<UserForm onUserAdd={onUserAddMock} />);
 
   // Find the two inputs
-  const [nameInput, emailInput] = screen.getAllByRole('textbox');
+  const emailInput = screen.getByRole('textbox', {
+    name: /email/i,
+  }); /**  Use this method IF you have a label properly attached to our input (see how it's done in UserForm.jsx)*/
+  //* Optional second input to specify text of the label attached to the input
+  //* The "/email/" regex means match anything that contains "email" & i is so it's not case sensative
+
+  const nameInput = screen.getByRole('textbox', { name: /name/i });
 
   // Simulate typing in a name
   await user.click(nameInput);
@@ -51,6 +55,9 @@ test('it calls onUserAdd when the form is submitted', async () => {
   await user.click(button);
 
   // Assertion to make sure 'onUserAdd' gets called with email/name
-  expect(argList).toHaveLength(1);
-  expect(argList[0][0]).toEqual({ name: 'jane', email: 'jane@jane.com' });
+  expect(onUserAddMock).toHaveBeenCalled();
+  expect(onUserAddMock).toHaveBeenCalledWith({
+    name: 'jane',
+    email: 'jane@jane.com',
+  });
 });
