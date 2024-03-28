@@ -14,7 +14,7 @@ function UserForm({ onUserAdd }) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        {/** 7. htmlFor MUST contain the id of its ref input, if you want to target input using getByRole w/ second arg */}
+        {/** 8. htmlFor MUST contain the id of its ref input, if you want to target input using getByRole w/ second arg */}
         <label htmlFor='name'>Name</label>
         <input
           type='text'

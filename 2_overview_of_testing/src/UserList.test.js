@@ -1,12 +1,12 @@
 /**
- * 1. TESTING PLAYGROUND -> screen.logTestingPlaygroundURL()
- * 2. DATA-TESTID
- * 3. CONTAINER.QUERYSELECTOR
- * 4. TESTING TABLE CONTENTS
- * 5. AVOID BEFOREEACH - React Testing Library highly discourages beforeEach, though it still works.
+ * 3. QUERYING ELEMENTS by:
+ *  2. DATA-TESTID
+ *  3 CONTAINER.QUERYSELECTOR
+ * 6. TESTING TABLE CONTENTS
+ * 8. TESTING PLAYGROUND -> screen.logTestingPlaygroundURL()
  */
 
-import { render, screen, within, container } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import UserList from './UserList';
 
 const users = [
@@ -24,14 +24,14 @@ test('render the correct number of rows - w/ data-testid', () => {
 
   // Find all the rows in the table
   // screen.logTestingPlaygroundURL();
-  /** 1. screen.logTestingPlaygroundURL() -> used to help identify element roles
+  /** 8. screen.logTestingPlaygroundURL() -> used to help identify element roles
    *     1. Add this line after a render, run the test and click on the generated link
    *     2. Click on the intended element and you should see its role revealed.
    *     3. Sometimes it's hard to click.
    *        -> Try adding a style to make it easier. In this case for the tr, we can use "style='border: 10px solid red; display:block'"
    */
 
-  /** 2. data-testid */
+  /** 3.2 data-testid */
   const rows = within(screen.getByTestId('users')).getAllByRole('row');
   // we are grabbing tbody element w/ data-testid "users"
   // drilling "within" to grab all elements inside of it
@@ -45,7 +45,7 @@ test('render the correct number of rows - w/ container.querySelector', () => {
   const { container } = renderComponent();
 
   // Find all the rows in the table
-  /** 2. Query Selector */
+  /** 3.3 Container Query Selector */
   // eslint-disable-next-line
   const rows = container.querySelectorAll('tbody tr');
 
@@ -53,7 +53,7 @@ test('render the correct number of rows - w/ container.querySelector', () => {
   expect(rows).toHaveLength(2);
 });
 
-/** 4. Testing Table Contents */
+/** 6. Testing Table Contents */
 test('render the email and name of each user', () => {
   const { users } = renderComponent();
 
