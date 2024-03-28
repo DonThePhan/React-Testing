@@ -7,12 +7,14 @@ function UserForm({ onUserAdd }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onUserAdd({ email, name });
+    setEmail('');
+    setName('');
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        {/** htmlFor MUST contain the id of its ref input, if you want to target input using getByRole w/ second arg */}
+        {/** 7. htmlFor MUST contain the id of its ref input, if you want to target input using getByRole w/ second arg */}
         <label htmlFor='name'>Name</label>
         <input
           type='text'
